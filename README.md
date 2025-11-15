@@ -1,4 +1,9 @@
 # Taller de Rendimiento en Sistemas Operativos – Multiplicación de Matrices
+Nombre: Elier Ibarra
+
+Curso: Sistemas Operativos – Pontificia Universidad Javeriana
+
+Descripción: Taller de rendimiento con enfoque en programación paralela (Fork, Pthreads, OpenMP).
 
 Repositorio del taller de Sistemas Operativos enfocado en **medir y comparar el rendimiento** de la multiplicación clásica de matrices usando tres enfoques:
 
