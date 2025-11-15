@@ -20,43 +20,33 @@ en los tiempos de ejecución de una misma tarea computacionalmente pesada.
 
 ---
 
-## 1. Contenido del repositorio
+# Multiplicación de Matrices - Implementaciones Paralelas
 
-```text
-Taller_Rendimiento_SO/
-├── src/
-│   ├── mmClasicaFork.c        # Versión con procesos (fork)
-│   ├── mmClasicaPosix.c       # Versión con hilos POSIX (pthread)
-│   ├── mmOpenMP.c             # Versión con OpenMP
-│   └── utils.h                # Funciones de apoyo (si aplica)
-├── scripts/
-│   └── lanzador.pl            # Script para ejecutar varias pruebas seguidas
-├── data/
-│   └── resultados_ejecuciones.csv   # Resultados exportados desde Excel
-├── docs/
-│   ├── informe_SO.pdf         # Informe final del taller
-│   └── Taller_Rendimiento_SO.xlsx   # Hoja de cálculo con tiempos y análisis
-├── Makefile                   # Compilación automática de las tres versiones
-├── LICENSE                    # Licencia MIT
-└── .gitignore                 # Archivos a ignorar por Git
-2. Objetivo del taller
-El taller busca responder preguntas como:
+Esta carpeta contiene diferentes implementaciones de multiplicación de matrices utilizando diversas técnicas de paralelización.
 
-¿Qué tanto mejora el rendimiento al paralelizar la multiplicación de matrices?
+## - Archivos del taller - 
 
-¿Hasta qué punto vale la pena aumentar el número de hilos/procesos?
+### 1. Script de Automatización
+- **`lanzador.pl`**: Script en Perl para ejecutar pruebas por lotes del algoritmo `mmClasicaFork` con diferentes configuraciones.
 
-¿Qué diferencias reales hay entre usar fork, pthread y OpenMP?
+### 2. Implementaciones de Multiplicación de Matrices
 
-¿Cómo afecta el hardware (PC vs VM) a los resultados?
+#### **`mmClasicaFork.c`**
+- **Algoritmo**: Multiplicación clásica de matrices
+- **Paralelización**: Procesos Fork
+- **Características**: Divide el trabajo entre procesos hijos que calculan diferentes filas de la matriz resultante
 
-Para eso se implementó la misma operación (multiplicación clásica de matrices cuadradas) en tres variantes y se midió su tiempo de ejecución para distintos tamaños de matriz y distintos números de hilos/procesos.
+#### **`mmClasicaOpenMP.c`**
+- **Algoritmo**: Multiplicación clásica de matrices  
+- **Paralelización**: OpenMP
+- **Características**: Utiliza directivas pragma para paralelización automática
 
-3. Requisitos
-Para compilar y ejecutar el código se necesita:
+#### **`mmClasicaPosix.c`**
+- **Algoritmo**: Multiplicación clásica de matrices
+- **Paralelización**: Pthreads (POSIX)
+- **Características**: Implementación con hilos usando la biblioteca pthread
 
-Sistema tipo Unix (Linux recomendado)
-
-gcc con soporte para OpenMP
-
-Biblioteca de hilos POSIX (normalmente incluida en glibc)
+#### **`mmFilasOpenMP.c`**
+- **Algoritmo**: Multiplicación con matriz transpuesta (Filas × Filas)
+- **Paralelización**: OpenMP
+- **Características**: Optimización mediante acceso a memoria más eficiente
